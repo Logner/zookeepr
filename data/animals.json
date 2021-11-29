@@ -124,18 +124,18 @@
       "diet": "omnivore",
       "personalityTraits": [
         "cranky",
-        "proud"
+        "proud",
+        "goofy"
       ],
       "id": "12"
     },
     {
-      "name": "Mehul",
-      "species": "peacock",
+      "name": "Kumsash",
+      "species": "Potato",
       "diet": "omnivore",
       "personalityTraits": [
-        "cranky",
-        "proud",
-        "goofy"
+        "hungry",
+        "anxious"
       ],
       "id": "13"
     }

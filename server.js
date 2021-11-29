@@ -8,6 +8,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 // parse incoming JSON data
 app.use(express.json());
+app.use(express.static('public'));
 
 function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
@@ -45,12 +46,12 @@ function filterByQuery(query, animalsArray) {
       filteredResults = filteredResults.filter(animal => animal.name === query.name);
     }
     return filteredResults;
-  }
+}
 
   function findById(id, animalsArray) {
     const result = animalsArray.filter(animal => animal.id === id)[0];
     return result;
-  }
+}
 
   function validateAnimal(animal) {
     if (!animal.name || typeof animal.name !== 'string') {
@@ -66,9 +67,9 @@ function filterByQuery(query, animalsArray) {
       return false;
     }
     return true;
-  }
+}
 
-  function createNewAnimal(body, animalsArray) {
+function createNewAnimal(body, animalsArray) {
     const animal = body;
     animalsArray.push(animal);
     fs.writeFileSync(
@@ -76,7 +77,17 @@ function filterByQuery(query, animalsArray) {
       JSON.stringify({ animals: animalsArray }, null, 2)
     );
     return animal;
-  }
+}
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/animals', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+
 
 app.get('/api/animals', (req,res) => {
     let results = animals;
@@ -86,6 +97,11 @@ app.get('/api/animals', (req,res) => {
     res.json(results);
 });
 
+app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+
+
 app.get('/api/animals/:id', (req, res) => {
     const result = findById(req.params.id, animals);
     if (result) {
@@ -93,9 +109,9 @@ app.get('/api/animals/:id', (req, res) => {
     } else {
       res.sendStatus(404);
     }
-  });
+});
 
-  app.post('/api/animals', (req, res) => {
+app.post('/api/animals', (req, res) => {
     // set id based on what the next index of the array will be
     req.body.id = animals.length.toString();
   
@@ -106,7 +122,7 @@ app.get('/api/animals/:id', (req, res) => {
       const animal = createNewAnimal(req.body, animals);
       res.json(animal);
     }
-  });
+});
   
 
 app.listen(PORT, () => {console.log(`API server now on port ${PORT}!`)})
