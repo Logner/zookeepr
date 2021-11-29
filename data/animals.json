@@ -138,6 +138,16 @@
         "anxious"
       ],
       "id": "13"
+    },
+    {
+      "name": "Vivek",
+      "species": "Cobra",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "loving",
+        "goofy"
+      ],
+      "id": "14"
     }
   ]
 }
