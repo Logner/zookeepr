@@ -108,6 +108,36 @@
         "loving"
       ],
       "id": "10"
+    },
+    {
+      "name": "Larry",
+      "species": "lemur",
+      "diet": "omnivore",
+      "personalityTraits": [
+        "hungry"
+      ],
+      "id": "11"
+    },
+    {
+      "name": "Mehul",
+      "species": "peacock",
+      "diet": "omnivore",
+      "personalityTraits": [
+        "cranky",
+        "proud"
+      ],
+      "id": "12"
+    },
+    {
+      "name": "Mehul",
+      "species": "peacock",
+      "diet": "omnivore",
+      "personalityTraits": [
+        "cranky",
+        "proud",
+        "goofy"
+      ],
+      "id": "13"
     }
   ]
 }
